@@ -1,0 +1,42 @@
+[ja3guard]
+# Listening ip adress for ja3guard proxy
+    listen_addr = "127.0.0.1"
+# Listening port for ja3guard proxy
+    listen_port = 443
+# the tls certicate file
+    tls_cert_file = ""
+# the tls private key file
+    tls_key_file = ""
+# the number of workers (threads) to spawn. (each workers are used for accept and/or pass the connection) (default: 5)
+    workers = 5
+# the TLS version to use (possible value are: "tlsv1.2" | "tlsv1.3" | "all" | "default" | "secure" | "legacy")
+    tls_version = "tlsv1.2"
+
+[endpoint]
+# IP address of the endpoint
+    ip_addr = "172.67.150.33"
+# TCP port of the endpoint
+    port = 443
+# (optional) use TLS for contacting the endpoint (recommended)
+    use_tls = true
+# (optional and only if use_tls is true) choose the TLS version to use (same value as ja3guard.tls_version)
+    tls_version = "tlsv1.3"
+# (optional and only if use_tls is true) specifie the servername of the endpoint
+    servername = "example.com"
+# (optional and only if use_tls is true) the client certficate if the endpoint ask for this
+    tls_auth_cert_file = ""
+# (optional and only if use_tls is true) the client key if the endpoint ask for the client certficate
+    tls_auth_key_file = ""
+# (optional and only if use_tls is true) the file of the CA root (with the CA using by the endpoint)
+    tls_ca_file = ""
+
+# optiional table
+[http]
+# rewrite the X-Real-Ip header if is already exist
+    x_real_ip_rewrite = false
+# Adding X-Ja3-Hash header to the HTTP request
+    x_ja3_hash = true
+# Adding X-Ja3-Text header to the HTTP request
+    x_ja3_text = true
+# Adding some custom headers to the HTTP request
+    custom_headers = [["X-Token:", "abcdef"], ["X-Country:", "JP"]]
