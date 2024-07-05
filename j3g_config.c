@@ -205,7 +205,7 @@ _j3g_read_table_http(toml_table_t *table_http, char *errmsg, int err_size)
     if (j3g_global_config.http.custom_headers == NULL)
         return J3G_CONFE_NOMEM;
 
-    j3g_global_config.http.custom_headers_len = array_headers_len;
+    j3g_global_config.http.custom_headers_len = 0
 
     for (i = 0; i < array_headers_len; i++) {
         header = toml_array_at(array_headers, i);
@@ -240,6 +240,7 @@ _j3g_read_table_http(toml_table_t *table_http, char *errmsg, int err_size)
 
         j3g_global_config.http.custom_headers[i].key = key.u.s;
         j3g_global_config.http.custom_headers[i].value = value.u.s;
+        j3g_global_config.http.custom_headers_len++;
     }
     
     return J3G_CONFE_OK;
