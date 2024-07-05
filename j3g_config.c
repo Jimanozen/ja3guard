@@ -201,7 +201,7 @@ _j3g_read_table_http(toml_table_t *table_http, char *errmsg, int err_size)
     
     array_headers_len = toml_array_nelem(array_headers);
     
-    j3g_global_config.http.custom_headers = malloc(array_headers_len + sizeof(struct j3g_config_custom_headers));
+    j3g_global_config.http.custom_headers = malloc(array_headers_len * sizeof(struct j3g_config_custom_headers));
     if (j3g_global_config.http.custom_headers == NULL)
         return J3G_CONFE_NOMEM;
 
